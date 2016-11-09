@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Favorite routes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      You don't have any favorite route
+    </ion-card-content>
+    <ion-item>
+      <button primary clear item-right>
+        <ion-icon name="navigate"></ion-icon>
+        Start
+      </button>
+    </ion-item>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addFavoriteRoute()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
