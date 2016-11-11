@@ -6,6 +6,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Choose a city</ion-label>
+      <ion-select [(ngModel)]="selectedCity">
+        <ion-option *ngFor="let city of cities" value="{{city.name}}">{{city.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>

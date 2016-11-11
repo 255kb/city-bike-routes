@@ -7,9 +7,15 @@ import { BikeProvider } from '../../providers/bike';
   templateUrl: 'add.html'
 })
 export class AddPage {
+  public currentStep: number = 1;
+  public cities: Array<any>;
+  public selectedCity:string;
 
   constructor(public navCtrl: NavController, private bikeProvider: BikeProvider) {
-
+    bikeProvider.getContracts()
+      .subscribe(cities => this.cities = cities,
+      err => {
+        console.log(err);
+      });
   }
-
 }
