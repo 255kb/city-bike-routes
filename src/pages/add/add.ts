@@ -8,14 +8,38 @@ import { BikeProvider } from '../../providers/bike';
 })
 export class AddPage {
   public currentStep: number = 1;
-  public cities: Array<any>;
-  public selectedCity:string;
+  public stations: Array<any>;
+  public contracts: Array<any>;
+  public selectedContract: string = '';
+  public selectedStartingStation: string = '';
+  public selectedEndingStation: string = '';
+  public contractSelected: boolean = false;
 
   constructor(public navCtrl: NavController, private bikeProvider: BikeProvider) {
     bikeProvider.getContracts()
-      .subscribe(cities => this.cities = cities,
+      .subscribe(contracts => this.contracts = contracts,
       err => {
         console.log(err);
       });
+  }
+
+  public onContractChange(newContract: string) {
+    this.contractSelected = true;
+
+    //TODO add loading indicator
+    //TODO order by name
+    this.bikeProvider.getStations(newContract)
+      .subscribe(stations => this.stations = stations,
+      err => {
+        console.log(err);
+      });
+  }
+
+  public onStartingStationChange(startingStation: string) {
+
+  }
+
+  public onEndingStationChange(endingStation: string) {
+
   }
 }
