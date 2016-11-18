@@ -6,12 +6,14 @@ import { AddPage } from '../pages/add/add';
 import { HomePage } from '../pages/home/home';
 import { BikeProvider } from '../providers/bike';
 import { RouteProvider } from '../providers/route';
+import { UserRouteComponent } from '../component/userRoute';
 
 @NgModule({
   declarations: [
     MyApp,
     AddPage,
-    HomePage
+    HomePage,
+    UserRouteComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp)
