@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { BikeProvider } from '../../providers/bike';
-import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { RouteProvider } from '../../providers/route';
 
@@ -18,7 +17,7 @@ export class AddPage {
   public selectedEndingStation: number = null;
   public contractSelected: boolean = false;
 
-  constructor(public navCtrl: NavController, public toastController: ToastController, private storage: Storage, private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
+  constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
     bikeProvider.getContracts()
       .subscribe(contracts => this.contracts = contracts,
       err => {
