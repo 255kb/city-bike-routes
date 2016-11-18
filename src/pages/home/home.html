@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card *ngIf="routes.length === 0">
     <ion-card-content>
       You don't have any favorite route
     </ion-card-content>
@@ -15,6 +15,14 @@
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-item>
+  </ion-card>
+
+  <ion-card *ngFor="let route of routes">
+    <ion-card-content>
+      {{route.contract}}
+      {{route.startStationNumber}}
+      {{route.endStationNumber}}
+    </ion-card-content>
   </ion-card>
 
   <ion-fab bottom right>
