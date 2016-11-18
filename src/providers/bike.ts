@@ -18,8 +18,8 @@ export class BikeProvider {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  getStations(contract: string): Observable<any[]> {
-    return this.http.get(`${this.apiUrl}stations${this.apiKeyString}&contract=${contract}`)
+  getStations(contract: string, stationNumber?: number): Observable<any[]> {
+    return this.http.get(`${this.apiUrl}stations${(stationNumber)?'/'+stationNumber:''}${this.apiKeyString}&contract=${contract}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
