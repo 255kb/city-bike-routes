@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { AddPage } from '../pages/add/add';
 import { HomePage } from '../pages/home/home';
 import { BikeProvider } from '../providers/bike';
+import { RouteProvider } from '../providers/route';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BikeProvider } from '../providers/bike';
   ],
   providers: [
     BikeProvider,
+    RouteProvider,
     Storage
   ]
 })
