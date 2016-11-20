@@ -7,13 +7,19 @@ import { HomePage } from '../pages/home/home';
 import { BikeProvider } from '../providers/bike';
 import { RouteProvider } from '../providers/route';
 import { UserRouteComponent } from '../component/userRoute';
+import { StationName } from '../pipes/stationName';
 
 @NgModule({
   declarations: [
     MyApp,
     AddPage,
     HomePage,
-    UserRouteComponent
+
+    //components
+    UserRouteComponent,
+
+    //pipes
+    StationName
   ],
   imports: [
     IonicModule.forRoot(MyApp)
