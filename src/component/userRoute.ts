@@ -6,23 +6,28 @@ import { BikeProvider } from '../providers/bike';
 @Component({
   selector: 'user-route',
   template: `
-  <ion-card>
-    <ion-item *ngIf="startStation">
-      <ion-icon name="arrow-forward" item-left></ion-icon>
-      <h2>{{startStation | stationName: true}}</h2>
-      <p>{{startStation.address}}</p>
-      <p item-right large>
-        <span class="bold" [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}"> {{startStation.available_bikes}} </span>
-      </p>
+  <ion-card *ngIf="startStation && endStation">
+    <ion-item>
+      <span [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}">
+        <ion-icon name="bicycle"></ion-icon> {{startStation.available_bikes}}
+      </span>
+      {{startStation | stationName: true}}
     </ion-item>
 
-    <ion-item *ngIf="endStation">
-      <ion-icon name="arrow-forward" item-left></ion-icon>
-      <h2>{{endStation | stationName: true}}</h2>
-      <p>{{startStation.address}}</p>
-      <p item-right large>
-        <span class="bold" [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}"> {{endStation.available_bike_stands}} </span>
-      </p>
+    <ion-item>
+      <ion-icon name="md-more" class="grey" item-left small></ion-icon>
+      <p class="grey">&nbsp;</p>
+    </ion-item>
+
+    <ion-item>
+      <span [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}">
+        <ion-icon name=""></ion-icon> {{endStation.available_bike_stands}}
+      </span>
+      {{endStation | stationName: true}}
+    </ion-item>
+
+    <ion-item>
+      <p class="grey">Last update</p>
     </ion-item>
 
     <ion-item>
@@ -37,11 +42,13 @@ import { BikeProvider } from '../providers/bike';
     .red {color: red;}
     .orange {color: orange;}
     .green {color: green;}
+    .grey {color: #ccc;}
     .bold {font-weight: bold;}
   `]
 })
 export class UserRouteComponent {
   //TODO show loading indicator
+  //TODo display last update like time ago
   @Input()
   route: IRoute;
 
