@@ -7,27 +7,41 @@ import { BikeProvider } from '../providers/bike';
   selector: 'user-route',
   template: `
   <ion-card>
-    <ion-card-content>
-      {{route.contract}}
-      <div *ngIf="startStation">
-        {{startStation | stationName: true}}
-        <span [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}">{{startStation.available_bikes}}</span>
-      </div>
-      <div *ngIf="endStation">
-        {{endStation | stationName: true}}
-        <span [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}">{{endStation.available_bike_stands}}</span>
-      </div>
-    </ion-card-content>
+    <ion-item *ngIf="startStation">
+      <ion-icon name="arrow-forward" item-left></ion-icon>
+      <h2>{{startStation | stationName: true}}</h2>
+      <p>{{startStation.address}}</p>
+      <p item-right large>
+        <span class="bold" [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}"> {{startStation.available_bikes}} </span>
+      </p>
+    </ion-item>
+
+    <ion-item *ngIf="endStation">
+      <ion-icon name="arrow-forward" item-left></ion-icon>
+      <h2>{{endStation | stationName: true}}</h2>
+      <p>{{startStation.address}}</p>
+      <p item-right large>
+        <span class="bold" [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}"> {{endStation.available_bike_stands}} </span>
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <span item-left small><ion-badge item-right>{{route.contract}}</ion-badge></span>
+      <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item>
   </ion-card>`,
   styles: [`
-    .red {color:red;}
-    .orange {color:orange;}
-    .green {color:green;}
+    .red {color: red;}
+    .orange {color: orange;}
+    .green {color: green;}
+    .bold {font-weight: bold;}
   `]
 })
 export class UserRouteComponent {
   //TODO show loading indicator
-  //TODO improve style
   @Input()
   route: IRoute;
 
@@ -56,5 +70,9 @@ export class UserRouteComponent {
           console.log(err);
         });
     });
+  }
+
+  public removeRoute() {
+
   }
 }
