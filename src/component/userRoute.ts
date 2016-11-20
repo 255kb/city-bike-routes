@@ -10,11 +10,11 @@ import { BikeProvider } from '../providers/bike';
     <ion-card-content>
       {{route.contract}}
       <div *ngIf="startStation">
-        {{startStation.name}}
+        {{startStation | stationName: true}}
         <span [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}">{{startStation.available_bikes}}</span>
       </div>
       <div *ngIf="endStation">
-        {{endStation.name}}
+        {{endStation | stationName: true}}
         <span [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}">{{endStation.available_bike_stands}}</span>
       </div>
     </ion-card-content>
