@@ -9,7 +9,7 @@ export class StationName implements PipeTransform {
   public transform(station: any, showNumber: boolean): string {
     let nameWithoutNumber = station.name.replace(/[0-9]+ *- */, '');
     if (showNumber) {
-      return `${nameWithoutNumber} (${station.number})`;
+      return `${nameWithoutNumber} (no. ${station.number})`;
     } else {
       return nameWithoutNumber;
     }
