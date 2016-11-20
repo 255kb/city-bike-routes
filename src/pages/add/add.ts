@@ -30,6 +30,7 @@ export class AddPage {
     this.selectedContract = newContract;
 
     //TODO add loading indicator
+    //TODO filter open stations only
     //TODO order by name
     this.bikeProvider.getStations(newContract)
       .subscribe(stations => this.stations = stations,
