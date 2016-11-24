@@ -9,6 +9,7 @@ import { RouteProvider } from '../providers/route';
 import { UserRouteComponent } from '../component/userRoute';
 import { StationName } from '../pipes/stationName';
 import { StationStatus } from '../pipes/stationStatus';
+import { UtilsProvider } from '../providers/utils';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { StationStatus } from '../pipes/stationStatus';
   providers: [
     BikeProvider,
     RouteProvider,
+    UtilsProvider,
     Storage
   ]
 })
