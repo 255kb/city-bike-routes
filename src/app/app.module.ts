@@ -8,6 +8,7 @@ import { BikeProvider } from '../providers/bike';
 import { RouteProvider } from '../providers/route';
 import { UserRouteComponent } from '../component/userRoute';
 import { StationName } from '../pipes/stationName';
+import { StationStatus } from '../pipes/stationStatus';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StationName } from '../pipes/stationName';
     UserRouteComponent,
 
     //pipes
-    StationName
+    StationName,
+    StationStatus
   ],
   imports: [
     IonicModule.forRoot(MyApp)
