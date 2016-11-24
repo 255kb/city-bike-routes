@@ -3,6 +3,7 @@ import { NavController, ToastController } from 'ionic-angular';
 import { BikeProvider } from '../../providers/bike';
 import { HomePage } from '../home/home';
 import { RouteProvider } from '../../providers/route';
+import { UtilsProvider } from '../../providers/utils';
 
 @Component({
   selector: 'page-add',
@@ -18,9 +19,11 @@ export class AddPage {
   public contractSelected: boolean = false;
   public stationsLoaded: boolean = false;
 
-  constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
+  constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider, private utils: UtilsProvider) {
     bikeProvider.getContracts()
-      .subscribe(contracts => this.contracts = contracts,
+      .subscribe((contracts) => {
+        this.contracts = contracts.sort(this.utils.compareDesc);
+      },
       err => {
         console.log(err);
       });
