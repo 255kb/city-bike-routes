@@ -16,6 +16,7 @@ export class AddPage {
   public selectedStartingStation: number = null;
   public selectedEndingStation: number = null;
   public contractSelected: boolean = false;
+  public stationsLoaded: boolean = false;
 
   constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
     bikeProvider.getContracts()
@@ -28,12 +29,14 @@ export class AddPage {
   public onContractChange(newContract: string) {
     this.contractSelected = true;
     this.selectedContract = newContract;
+    this.stationsLoaded = false;
 
-    //TODO add loading indicator
-    //TODO filter open stations only
     //TODO order by name
     this.bikeProvider.getStations(newContract)
-      .subscribe(stations => this.stations = stations,
+      .subscribe((stations) => {
+        this.stations = stations;
+        this.stationsLoaded = true;
+    },
       err => {
         console.log(err);
       });

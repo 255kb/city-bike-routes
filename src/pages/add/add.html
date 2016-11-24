@@ -1,9 +1,12 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>
       Add a favorite route
     </ion-title>
-  </ion-navbar>
+    <ion-buttons end *ngIf="contractSelected && !stationsLoaded">
+      <ion-spinner color="primary"></ion-spinner>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -16,13 +19,13 @@
     </ion-item>
     <ion-item>
       <ion-label>2. Starting station</ion-label>
-      <ion-select [(ngModel)]="selectedStartingStation" disabled="{{!contractSelected}}">
+      <ion-select [(ngModel)]="selectedStartingStation" disabled="{{!contractSelected && !stationsLoaded}}">
         <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station | stationName: true}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>3. Ending station</ion-label>
-      <ion-select [(ngModel)]="selectedEndingStation" disabled="{{!contractSelected}}">
+      <ion-select [(ngModel)]="selectedEndingStation" disabled="{{!contractSelected && !stationsLoaded}}">
         <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station | stationName: true}}</ion-option>
       </ion-select>
     </ion-item>
