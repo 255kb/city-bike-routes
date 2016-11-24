@@ -17,13 +17,13 @@
     <ion-item>
       <ion-label>2. Starting station</ion-label>
       <ion-select [(ngModel)]="selectedStartingStation" disabled="{{!contractSelected}}">
-        <ion-option *ngFor="let station of stations" value="{{station.number}}">{{station | stationName: true}}</ion-option>
+        <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station | stationName: true}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>3. Ending station</ion-label>
       <ion-select [(ngModel)]="selectedEndingStation" disabled="{{!contractSelected}}">
-        <ion-option *ngFor="let station of stations" value="{{station.number}}">{{station | stationName: true}}</ion-option>
+        <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station | stationName: true}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
