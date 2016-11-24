@@ -57,8 +57,8 @@ export class UserRouteComponent {
   public endStation: any = null;
 
   constructor(private bikeProvider: BikeProvider) {
-    //set timer to fetch stations infos every minute (TODO put at 60 sec)
-    this.stationsTimer = Observable.timer(1000, 10 * 1000);
+    //set timer to fetch stations infos every minute
+    this.stationsTimer = Observable.timer(1000, 30 * 1000);
 
     //get stations info
     this.stationsTimer.subscribe(() => {
