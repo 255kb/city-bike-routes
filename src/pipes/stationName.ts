@@ -1,8 +1,7 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'stationName',
-  //pure: false // needed to react to array changes
+  name: 'stationName'
 })
 @Injectable()
 export class StationName implements PipeTransform {
