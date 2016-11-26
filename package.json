@@ -1,7 +1,11 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "city-bike-fav",
+  "author": {
+    "name": "Guillaume Monnet",
+    "email": "hi@255kb.com",
+    "url": "https://255kb.com/"
+  },
+  "homepage": "",
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
@@ -28,7 +32,7 @@
     "@ionic/app-scripts": "0.0.45",
     "typescript": "2.0.6"
   },
-  "description": "city-bike-fav: An Ionic project",
+  "description": "City Bike Fav: Save your favorites routes in many cities' bike sharing services",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
