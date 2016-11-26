@@ -15,13 +15,8 @@ import { BikeProvider } from '../providers/bike';
     </ion-item>
 
     <ion-item>
-      <ion-icon name="md-more" class="grey" item-left small></ion-icon>
-      <p class="grey">&nbsp;</p>
-    </ion-item>
-
-    <ion-item>
       <span [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}">
-        <ion-icon name=""></ion-icon> {{endStation.available_bike_stands}}
+        <ion-icon name="pin"></ion-icon> {{endStation.available_bike_stands}}
       </span>
       {{endStation | stationName: true}}
     </ion-item>
