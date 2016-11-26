@@ -6,14 +6,7 @@ import { RouteProvider } from '../providers/route';
 
 @Component({
   selector: 'user-route',
-  templateUrl: 'userRoute.html',
-  styles: [`
-    .red {color: red;}
-    .orange {color: orange;}
-    .green {color: green;}
-    .grey {color: #ccc;}
-    .bold {font-weight: bold;}
-  `]
+  templateUrl: 'userRoute.html'
 })
 export class UserRouteComponent {
   //TODO show loading indicator
@@ -36,6 +29,7 @@ export class UserRouteComponent {
       this.bikeProvider.getStations(this.route.contract, this.route.startStationNumber)
         .subscribe((startStation) => {
           this.startStation = startStation;
+          this.setColor(startStation);
         },
         err => {
           console.log(err);
@@ -43,6 +37,7 @@ export class UserRouteComponent {
       this.bikeProvider.getStations(this.route.contract, this.route.endStationNumber)
         .subscribe((endStation) => {
           this.endStation = endStation;
+          this.setColor(endStation);
         },
         err => {
           console.log(err);
@@ -58,6 +53,16 @@ export class UserRouteComponent {
       setTimeout(() => {
         this.awaitingDeletion = false;
       }, 3000);
+    }
+  }
+
+  private setColor(station: any) {
+    if (station.available_bikes == 0) {
+      station.color = 'red';
+    } else if (station.available_bikes > 0 && station.available_bikes < 2) {
+      station.color = 'orange';
+    } else if (station.available_bikes > 2) {
+      station.color = 'green';
     }
   }
 }
