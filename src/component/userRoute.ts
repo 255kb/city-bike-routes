@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IRoute } from '../interfaces/IRoute';
 import { Observable } from 'rxjs/Rx';
 import { BikeProvider } from '../providers/bike';
+import { RouteProvider } from '../providers/route';
 
 @Component({
   selector: 'user-route',
@@ -18,14 +19,15 @@ export class UserRouteComponent {
   //TODO show loading indicator
   //TODo display last update like time ago
   //TODO add spacing between counter and station name
-  @Input()
-  route: IRoute;
+  @Input() route: IRoute;
+  @Input() routeIndex: number;
 
   private stationsTimer: Observable<number>;
   public startStation: any = null;
   public endStation: any = null;
+  public awaitingDeletion: boolean = false;
 
-  constructor(private bikeProvider: BikeProvider) {
+  constructor(private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
     //set timer to fetch stations infos every minute
     this.stationsTimer = Observable.timer(1000, 30 * 1000);
 
@@ -49,6 +51,13 @@ export class UserRouteComponent {
   }
 
   public removeRoute() {
-
+    if (this.awaitingDeletion) {
+      this.routeProvider.removeRoute(this.routeIndex);
+    } else {
+      this.awaitingDeletion = true;
+      setTimeout(() => {
+        this.awaitingDeletion = false;
+      }, 3000);
+    }
   }
 }

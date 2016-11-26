@@ -17,7 +17,7 @@
     </ion-item>
   </ion-card>
 
-  <user-route *ngFor="let route of routes" [route]="route"></user-route>
+  <user-route *ngFor="let route of routes; let routeIndex = index" [route]="route" [routeIndex]="routeIndex"></user-route>
 
   <ion-fab bottom right>
     <button ion-fab (click)="addFavoriteRoute()"><ion-icon name="add"></ion-icon></button>
