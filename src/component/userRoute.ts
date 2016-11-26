@@ -9,8 +9,6 @@ import { RouteProvider } from '../providers/route';
   templateUrl: 'userRoute.html'
 })
 export class UserRouteComponent {
-  //TODO show loading indicator
-  //TODo display last update like time ago
   //TODO add spacing between counter and station name
   @Input() route: IRoute;
   @Input() routeIndex: number;
