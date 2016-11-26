@@ -5,31 +5,7 @@ import { BikeProvider } from '../providers/bike';
 
 @Component({
   selector: 'user-route',
-  template: `
-  <ion-card *ngIf="startStation && endStation">
-    <ion-item>
-      <span [ngClass]="{red: startStation.available_bikes==0, orange: startStation.available_bikes>0, green: startStation.available_bikes>2}">
-        <ion-icon name="bicycle"></ion-icon> {{startStation.available_bikes}}
-      </span>
-      {{startStation | stationName: true}}
-    </ion-item>
-
-    <ion-item>
-      <span [ngClass]="{red: endStation.available_bike_stands==0, orange: endStation.available_bike_stands>0, green: endStation.available_bike_stands>2}">
-        <ion-icon name="pin"></ion-icon> {{endStation.available_bike_stands}}
-      </span>
-      {{endStation | stationName: true}}
-    </ion-item>
-
-    <ion-item>
-      <span item-left small><ion-badge item-right>{{route.contract}}</ion-badge></span>
-      <span class="grey">Last update {{startStation.last_update | timeAgo}}</span>
-      <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
-        <ion-icon name="trash"></ion-icon>
-        Delete
-      </button>
-    </ion-item>
-  </ion-card>`,
+  templateUrl: 'userRoute.html',
   styles: [`
     .red {color: red;}
     .orange {color: orange;}
