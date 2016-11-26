@@ -22,11 +22,8 @@ import { BikeProvider } from '../providers/bike';
     </ion-item>
 
     <ion-item>
-      <p class="grey">Last update</p>
-    </ion-item>
-
-    <ion-item>
       <span item-left small><ion-badge item-right>{{route.contract}}</ion-badge></span>
+      <span class="grey">Last update {{startStation.last_update | timeAgo}}</span>
       <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
         <ion-icon name="trash"></ion-icon>
         Delete
@@ -44,6 +41,7 @@ import { BikeProvider } from '../providers/bike';
 export class UserRouteComponent {
   //TODO show loading indicator
   //TODo display last update like time ago
+  //TODO add spacing between counter and station name
   @Input()
   route: IRoute;
 
