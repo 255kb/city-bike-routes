@@ -9,6 +9,7 @@ import { RouteProvider } from '../providers/route';
 import { UserRouteComponent } from '../component/userRoute';
 import { StationName } from '../pipes/stationName';
 import { StationStatus } from '../pipes/stationStatus';
+import { TimeAgo } from '../pipes/timeAgo';
 import { UtilsProvider } from '../providers/utils';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UtilsProvider } from '../providers/utils';
 
     //pipes
     StationName,
-    StationStatus
+    StationStatus,
+    TimeAgo
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -40,4 +42,4 @@ import { UtilsProvider } from '../providers/utils';
     Storage
   ]
 })
-export class AppModule {}
+export class AppModule { }
