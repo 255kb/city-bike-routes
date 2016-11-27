@@ -14,7 +14,7 @@
     <ion-item>
       <ion-label>1. City</ion-label>
       <ion-select [ngModel]="selectedContract" (ngModelChange)="onContractChange($event)">
-        <ion-option *ngFor="let contract of contracts" value="{{contract.name}}">{{contract.name}}</ion-option>
+        <ion-option *ngFor="let contract of contracts" value="{{contract.name}}">{{contract.name}} - {{contract.commercial_name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
