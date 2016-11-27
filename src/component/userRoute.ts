@@ -19,7 +19,7 @@ export class UserRouteComponent {
   public awaitingDeletion: boolean = false;
 
   constructor(private bikeProvider: BikeProvider, private routeProvider: RouteProvider) {
-    //set timer to fetch stations infos every minute
+    //set timer to fetch stations infos every 30 seconds
     this.stationsTimer = Observable.timer(1000, 30 * 1000);
 
     //get stations info
