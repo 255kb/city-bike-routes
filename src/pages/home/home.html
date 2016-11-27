@@ -6,13 +6,10 @@
 
 <ion-content padding>
   <ion-card *ngIf="routes.length === 0">
-    <ion-card-content>
-      You don't have any favorite route
-    </ion-card-content>
     <ion-item>
+      <h2>You don't have any favorite route</h2>
       <button ion-button color="primary" icon-right clear item-right (click)="addFavoriteRoute()">
         Add
-        <ion-icon name="add"></ion-icon>
       </button>
     </ion-item>
   </ion-card>
