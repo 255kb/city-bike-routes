@@ -1,14 +1,14 @@
 <ion-card *ngIf="startStation && endStation">
   <ion-item>
-    <span color="{{startStation.color}}">
-        <ion-icon name="bicycle"></ion-icon> {{startStation.available_bikes}}
-      </span> {{startStation | stationName: true}}
+    <span color="{{startStation.color}}" class="spacing-right50">
+      <ion-icon name="bicycle" class="spacing-right10"></ion-icon> {{startStation.available_bikes}}
+    </span> {{startStation | stationName: true}}
   </ion-item>
 
   <ion-item>
-    <span color="{{endStation.color}}">
-        <ion-icon name="pin"></ion-icon> {{endStation.available_bike_stands}}
-      </span> {{endStation | stationName: true}}
+    <span color="{{endStation.color}}" class="spacing-right50">
+      <ion-icon name="pin" class="spacing-right20"></ion-icon> {{endStation.available_bike_stands}}
+    </span> {{endStation | stationName: true}}
   </ion-item>
 
   <ion-item>

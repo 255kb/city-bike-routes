@@ -6,10 +6,13 @@ import { RouteProvider } from '../providers/route';
 
 @Component({
   selector: 'user-route',
-  templateUrl: 'userRoute.html'
+  templateUrl: 'userRoute.html',
+  styles: [
+    '.spacing-right50 {display:inline-block;min-width:50px;}',
+    '.spacing-right20 {display:inline-block;min-width:20px;}'
+  ]
 })
 export class UserRouteComponent {
-  //TODO add spacing between counter and station name
   @Input() route: IRoute;
   @Input() routeIndex: number;
 
