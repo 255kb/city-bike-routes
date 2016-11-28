@@ -12,12 +12,28 @@ export class BikeProvider {
     //TODO add stations cache
   }
 
+  /**
+   * Get all contracts (cities) from API
+   *
+   * @returns {Observable<any[]>}
+   *
+   * @memberOf BikeProvider
+   */
   getContracts(): Observable<any[]> {
     return this.http.get(`${this.apiUrl}contracts${this.apiKeyString}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  /**
+   * Get all stations for a specific contract, or a specific station
+   *
+   * @param {string} contract - name of the contract as provided by the API
+   * @param {number} [stationNumber] - number of the station you want to fetch
+   * @returns {Observable<any[]>}
+   *
+   * @memberOf BikeProvider
+   */
   getStations(contract: string, stationNumber?: number): Observable<any[]> {
     return this.http.get(`${this.apiUrl}stations${(stationNumber)?'/'+stationNumber:''}${this.apiKeyString}&contract=${contract}`)
       .map((res: Response) => res.json())
