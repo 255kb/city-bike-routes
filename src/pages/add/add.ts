@@ -53,6 +53,11 @@ export class AddPage {
         endStationNumber: this.selectedEndingStation
       }).then((result) => {
         this.navCtrl.setPages([{ page: HomePage }]);
+
+        this.toastController.create({
+          message: 'Route added',
+          duration: 3000
+        }).present();
       }).catch((error) => {
         this.toastController.create({
           message: 'Error while saving the route',
