@@ -9,7 +9,8 @@ import { RouteProvider } from '../providers/route';
   templateUrl: 'userRoute.html',
   styles: [
     '.spacing-right50 {display:inline-block;min-width:50px;}',
-    '.spacing-right20 {display:inline-block;min-width:20px;}'
+    '.spacing-right20 {display:inline-block;min-width:20px;}',
+    '.bold {font-weight:bold;}'
   ]
 })
 export class UserRouteComponent {
