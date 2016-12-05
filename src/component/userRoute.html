@@ -1,17 +1,17 @@
-<ion-card *ngIf="startStation && endStation">
-  <ion-item>
+<ion-card>
+  <ion-item *ngIf="startStation">
     <span ion-text color="{{startStation.color}}" class="spacing-right50">
-      <ion-icon name="bicycle" class="spacing-right10"></ion-icon> {{startStation.available_bikes}}
+      <ion-icon name="bicycle" class="spacing-right20"></ion-icon> {{startStation.available_bikes}}
     </span> {{startStation | stationName: true}}
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="endStation">
     <span ion-text color="{{endStation.color}}" class="spacing-right50">
       <ion-icon name="pin" class="spacing-right20"></ion-icon> {{endStation.available_bike_stands}}
     </span> {{endStation | stationName: true}}
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="startStation">
     <span item-left small><ion-badge item-right>{{route.contract}}</ion-badge></span>
     <span ion-text color="grey">Last update {{startStation.last_update | timeAgo}}</span>
     <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
