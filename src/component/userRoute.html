@@ -3,14 +3,14 @@
     <span ion-text color="{{startStation.color}}" class="spacing-right50 bold">
       <ion-icon name="bicycle" class="spacing-right20"></ion-icon> {{startStation.available_bikes}}
     </span> {{startStation | stationName: true}}
-    <p color="grey">{{startStation.last_update | timeAgo}}</p>
+    <p ion-text color="grey">{{startStation.last_update | timeAgo}}</p>
   </ion-item>
 
   <ion-item *ngIf="endStation">
     <span ion-text color="{{endStation.color}}" class="spacing-right50 bold">
       <ion-icon name="pin" class="spacing-right20"></ion-icon> {{endStation.available_bike_stands}}
     </span> {{endStation | stationName: true}}
-    <p color="grey">{{endStation.last_update | timeAgo}}</p>
+    <p ion-text color="grey">{{endStation.last_update | timeAgo}}</p>
   </ion-item>
 
   <ion-item *ngIf="startStation">
