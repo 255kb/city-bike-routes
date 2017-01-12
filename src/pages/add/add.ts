@@ -39,7 +39,7 @@ export class AddPage {
       .subscribe((stations) => {
         this.stations = stations;
         this.stationsLoaded = true;
-    },
+      },
       err => {
         console.log(err);
       });
