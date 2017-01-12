@@ -15,7 +15,7 @@ export class UtilsProvider {
    *
    * @memberOf Utils
    */
-  public compareDesc(object1: any, object2: any) {
+  public compareDesc(object1: any, object2: any): number {
     if (object1.name < object2.name) {
       return -1;
     } else if (object1.name > object2.name) {
