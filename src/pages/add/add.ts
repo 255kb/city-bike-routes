@@ -4,6 +4,7 @@ import { BikeProvider } from '../../providers/bike';
 import { HomePage } from '../home/home';
 import { RouteProvider } from '../../providers/route';
 import { UtilsProvider } from '../../providers/utils';
+import { StationsFormatterProvider } from '../../providers/stationsFormatter';
 
 @Component({
   selector: 'page-add',
@@ -19,7 +20,7 @@ export class AddPage {
   public contractSelected: boolean = false;
   public stationsLoaded: boolean = false;
 
-  constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider, private utils: UtilsProvider) {
+  constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider, private utils: UtilsProvider, private stationsFormatterProvider: StationsFormatterProvider) {
     bikeProvider.getContracts()
       .subscribe((contracts) => {
         this.contracts = contracts.sort(this.utils.compareDesc);
@@ -34,10 +35,9 @@ export class AddPage {
     this.selectedContract = newContract;
     this.stationsLoaded = false;
 
-    //TODO order by name
     this.bikeProvider.getStations(newContract)
       .subscribe((stations) => {
-        this.stations = stations;
+        this.stations = this.stationsFormatterProvider.format(stations, true, true, true);
         this.stationsLoaded = true;
       },
       err => {
