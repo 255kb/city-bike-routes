@@ -1,19 +1,19 @@
 <ion-card>
-  <ion-item *ngIf="startStation">
-    <span ion-text color="{{startStation.color}}" class="spacing-right50 bold">
-      <ion-icon name="bicycle" class="spacing-right20"></ion-icon> {{startStation.available_bikes}}
-    </span> {{startStation | stationName: true}}
-    <p ion-text color="grey">{{startStation.last_update | timeAgo}}</p>
+  <ion-item *ngIf="route.startStation.data">
+    <span ion-text color="{{route.startStation.data.color}}"  class="spacing-right50 bold">
+      <ion-icon name="bicycle" class="spacing-right20"></ion-icon> {{route.startStation.data.available_bikes}}
+    </span> {{route.startStation.data | stationName: true}}
+    <p ion-text color="grey">{{route.startStation.data.last_update | timeAgo}}</p>
   </ion-item>
 
-  <ion-item *ngIf="endStation">
-    <span ion-text color="{{endStation.color}}" class="spacing-right50 bold">
-      <ion-icon name="pin" class="spacing-right20"></ion-icon> {{endStation.available_bike_stands}}
-    </span> {{endStation | stationName: true}}
-    <p ion-text color="grey">{{endStation.last_update | timeAgo}}</p>
+  <ion-item *ngIf="route.endStation.data">
+    <span ion-text color="{{route.endStation.data.color}}"  class="spacing-right50 bold">
+      <ion-icon name="pin" class="spacing-right20"></ion-icon> {{route.endStation.data.available_bike_stands}}
+    </span> {{route.endStation.data | stationName: true}}
+    <p ion-text color="grey">{{route.endStation.data.last_update | timeAgo}}</p>
   </ion-item>
 
-  <ion-item *ngIf="startStation">
+  <ion-item>
     <span item-left small><ion-badge item-right>{{route.contract}}</ion-badge></span>
     <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
         <ion-icon name="trash" *ngIf="!awaitingDeletion"></ion-icon>

@@ -1,5 +1,11 @@
 export interface IRoute {
   contract: string;
-  startStationNumber: number;
-  endStationNumber: number;
+  startStation: {
+    number: number;
+    data?: any;
+  }
+  endStation: {
+    number: number;
+    data?: any;
+  }
 }
