@@ -26,7 +26,10 @@ export class AddPage {
         this.contracts = contracts.sort(this.utils.compareDesc);
       },
       err => {
-        console.log(err);
+        this.toastController.create({
+          message: 'Error while fetching cities',
+          duration: 3000
+        }).present();
       });
   }
 
@@ -41,7 +44,10 @@ export class AddPage {
         this.stationsLoaded = true;
       },
       err => {
-        console.log(err);
+        this.toastController.create({
+          message: 'Error while fetching stations',
+          duration: 3000
+        }).present();
       });
   }
 
