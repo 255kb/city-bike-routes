@@ -35,7 +35,7 @@ export class RouteProvider {
         });
       });
     } else {
-      Promise.resolve(this.routes);
+      return Promise.resolve(this.routes);
     }
   }
 
