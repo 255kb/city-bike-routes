@@ -62,12 +62,10 @@ export class RouteProvider {
     let observables = [];
     this.routes.forEach((route, index) => {
       observables.push(this.bikeProvider.getStations(route.contract, route.startStation.number).do((startStationData) => {
-        this.setStationColor(startStationData, 'start');
-        route.startStation.data = startStationData;
+        route.startStation.data = this.setStationColor(startStationData, 'start');
       }));
       observables.push(this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
-        this.setStationColor(endStationData, 'end');
-        route.endStation.data = endStationData;
+        route.endStation.data = this.setStationColor(endStationData, 'end');
       }));
     });
 
@@ -83,7 +81,7 @@ export class RouteProvider {
     });
   }
 
-  private setStationColor(stationData: any, type: string): void {
+  private setStationColor(stationData: any, type: string): any {
     let stationProperty = 'available_bikes';
     if (type === 'end') {
       stationProperty = 'available_bike_stands';
@@ -95,5 +93,7 @@ export class RouteProvider {
     } else if (stationData[stationProperty] > 2) {
       stationData.color = 'green';
     }
+
+    return stationData;
   }
 }
