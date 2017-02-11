@@ -49,21 +49,16 @@ export class AddPage {
     if (this.selectedContract !== null && this.selectedStartingStation !== null && this.selectedEndingStation !== null) {
       this.routeProvider.addRoute({
         contract: this.selectedContract,
-        startStationNumber: this.selectedStartingStation,
-        endStationNumber: this.selectedEndingStation
-      }).then((result) => {
-        this.navCtrl.setPages([{ page: HomePage }]);
-
-        this.toastController.create({
-          message: 'Route added',
-          duration: 3000
-        }).present();
-      }).catch((error) => {
-        this.toastController.create({
-          message: 'Error while saving the route',
-          duration: 3000
-        }).present();
+        startStation: { number: this.selectedStartingStation },
+        endStation: { number: this.selectedEndingStation }
       });
+
+      this.navCtrl.setPages([{ page: HomePage }]);
+
+      this.toastController.create({
+        message: 'Route added',
+        duration: 3000
+      }).present();
     }
   }
 }
