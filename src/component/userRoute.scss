@@ -1,0 +1,19 @@
+user-route {
+  .spacing-right50 {
+    display:inline-block;
+    min-width:50px;
+  }
+  .spacing-right20 {
+    display:inline-block;
+    min-width:20px;
+  }
+  .bold {
+    font-weight:bold;
+  }
+
+  @each $colorName, $color in $colors {
+    .border-#{$colorName} {
+      border-left: 3px solid $color;
+    }
+  }
+}
