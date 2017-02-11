@@ -66,13 +66,13 @@ export class RouteProvider {
         route.startStation.data = startStationData;
       }));
       observables.push(this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
-        this.setStationColor(endStationData, 'start');
+        this.setStationColor(endStationData, 'end');
         route.endStation.data = endStationData;
       }));
     });
 
     //subscribe to all at once
-    Observable.merge(...observables).subscribe(() => { console.log('one sub') }, (error) => {
+    Observable.merge(...observables).subscribe(() => {}, (error) => {
       console.log(error);
     }, () => {
       //save to local storage when everything completes
