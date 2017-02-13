@@ -88,7 +88,7 @@ export class RouteProvider {
     }
     if (stationData[stationProperty] == 0) {
       stationData.color = 'red';
-    } else if (stationData[stationProperty] > 0 && stationData[stationProperty] < 2) {
+    } else if (stationData[stationProperty] > 0 && stationData[stationProperty] <= 2) {
       stationData.color = 'orange';
     } else if (stationData[stationProperty] > 2) {
       stationData.color = 'green';
