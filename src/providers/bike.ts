@@ -9,7 +9,6 @@ export class BikeProvider {
   private contractsCache: Array<any> = null;
 
   constructor(private http: Http) {
-    //TODO add stations cache
   }
 
   /**
