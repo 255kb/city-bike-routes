@@ -20,8 +20,8 @@ export class UserRouteComponent implements DoCheck {
   }
 
   ngOnInit() {
-    this.startStationDiffer = this.differs.find(this.route.startStation.data).create(null);
-    this.endStationDiffer = this.differs.find(this.route.endStation.data).create(null);
+    this.startStationDiffer = this.differs.find(this.route.startStation).create(null);
+    this.endStationDiffer = this.differs.find(this.route.endStation).create(null);
   }
 
   public removeRoute() {
