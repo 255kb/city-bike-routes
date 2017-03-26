@@ -9,7 +9,7 @@ export class RouteProvider {
   private routesStorageKeyName: string = 'routes';
   private routes: Array<IRoute>;
   private timer: Observable<number>;
-
+  
   constructor(private storage: Storage, private bikeProvider: BikeProvider) {
     //set timer to fetch stations infos every 60 seconds
     this.timer = Observable.timer(1000, 60 * 1000);

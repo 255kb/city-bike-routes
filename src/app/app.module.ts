@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { AddPage } from '../pages/add/add';
 import { HomePage } from '../pages/home/home';
@@ -12,9 +12,6 @@ import { StationStatus } from '../pipes/stationStatus';
 import { TimeAgo } from '../pipes/timeAgo';
 import { UtilsProvider } from '../providers/utils';
 import { StationsFormatterProvider } from '../providers/stationsFormatter';
-
-//TODO update to ionic last version
-//TODO set custom storage name
 
 @NgModule({
   declarations: [
@@ -31,7 +28,8 @@ import { StationsFormatterProvider } from '../providers/stationsFormatter';
     TimeAgo
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({ name: '__cbf' })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,8 +41,7 @@ import { StationsFormatterProvider } from '../providers/stationsFormatter';
     BikeProvider,
     RouteProvider,
     UtilsProvider,
-    StationsFormatterProvider,
-    Storage
+    StationsFormatterProvider
   ]
 })
 export class AppModule { }
