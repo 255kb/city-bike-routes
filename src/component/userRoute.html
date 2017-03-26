@@ -18,7 +18,7 @@
     <button ion-button color="danger" clear item-right icon-left (click)="removeRoute()">
         <ion-icon name="trash" *ngIf="!awaitingDeletion"></ion-icon>
         <ion-icon name="checkmark" *ngIf="awaitingDeletion"></ion-icon>
-        <span *ngIf="!awaitingDeletion">Delete</span><span *ngIf="awaitingDeletion">Confirm</span>
+        <span *ngIf="!awaitingDeletion"></span><span *ngIf="awaitingDeletion">Confirm</span>
       </button>
   </ion-item>
 </ion-card>
