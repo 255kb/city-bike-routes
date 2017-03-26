@@ -59,24 +59,26 @@ export class RouteProvider {
   }
 
   public refreshRoutes() {
-    let observables = [];
-    this.routes.forEach((route, index) => {
-      observables.push(this.bikeProvider.getStations(route.contract, route.startStation.number).do((startStationData) => {
-        route.startStation.data = this.setStationColor(startStationData, 'start');
-      }));
-      observables.push(this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
-        route.endStation.data = this.setStationColor(endStationData, 'end');
-      }));
-    });
 
-    //subscribe to all at once
-    Observable.merge(...observables).subscribe(() => {}, (error) => {
-      console.log(error);
-    }, () => {
-      //save to local storage when everything completes
-      this.storage.set(this.routesStorageKeyName, JSON.stringify(this.routes)).then((routesString: string) => {
-      }).catch((error) => {
+    this.routes.forEach((route, index) => {
+      let startSationObserver = this.bikeProvider.getStations(route.contract, route.startStation.number).do((startStationData) => {
+        route.startStation.data = this.setStationColor(startStationData, 'start');
+      });
+      let endSationObserver = this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
+        route.endStation.data = this.setStationColor(endStationData, 'end');
+      });
+
+      startSationObserver.concat(endSationObserver).subscribe(() => {}, (error) => {
         console.log(error);
+      }, () => {
+        //set route color
+        route.color = this.setCardIndicator(route);
+
+        //save to local storage when everything completes
+        this.storage.set(this.routesStorageKeyName, JSON.stringify(this.routes)).then((routesString: string) => {
+        }).catch((error) => {
+          console.log(error);
+        });
       });
     });
   }
@@ -95,5 +97,21 @@ export class RouteProvider {
     }
 
     return stationData;
+  }
+
+  private setCardIndicator(routeData: any) {
+    let startColor = routeData.startStation.data.color;
+    let endColor = routeData.endStation.data.color;
+    let cardColor = 'green';
+
+    if (startColor === 'orange' || endColor === 'orange') {
+      cardColor = 'orange';
+    }
+
+    if (startColor === 'red' || endColor === 'red') {
+      cardColor = 'red';
+    }
+
+    return cardColor;
   }
 }

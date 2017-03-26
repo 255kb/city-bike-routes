@@ -55,7 +55,7 @@ export class AddPage {
     if (this.selectedContract !== null && this.selectedStartingStation !== null && this.selectedEndingStation !== null) {
       this.routeProvider.addRoute({
         contract: this.selectedContract,
-        color: 'green',
+        color: '',
         startStation: { number: this.selectedStartingStation },
         endStation: { number: this.selectedEndingStation }
       });

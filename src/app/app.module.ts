@@ -13,6 +13,9 @@ import { TimeAgo } from '../pipes/timeAgo';
 import { UtilsProvider } from '../providers/utils';
 import { StationsFormatterProvider } from '../providers/stationsFormatter';
 
+//TODO update to ionic last version
+//TODO set custom storage name
+
 @NgModule({
   declarations: [
     MyApp,
