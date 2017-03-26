@@ -1,4 +1,4 @@
-<ion-card [ngClass]="cardBorder">
+<ion-card [ngClass]="['border-' + route.color]">
   <ion-item *ngIf="route.startStation.data">
     <span ion-text color="{{route.startStation.data.color}}"  class="spacing-right50 bold">
       <ion-icon name="bicycle" class="spacing-right20"></ion-icon> {{route.startStation.data.available_bikes}}
