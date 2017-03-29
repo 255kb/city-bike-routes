@@ -8,7 +8,15 @@
     </ion-item>
   </ion-card>
 
-  <user-route *ngFor="let route of routes; let routeIndex = index" [route]="route" [routeIndex]="routeIndex"></user-route>
+  <user-route *ngFor="let route of routes; let index = index; let last = last;" [route]="route" [routeIndex]="index" [isLast]="last" [reordering]="reordering"></user-route>
+
+  <ion-card *ngIf="routes.length >= 2" class="reorder">
+    <ion-item>
+      <button ion-button color="grey" icon-right clear item-right (click)="reorderRoutes()">
+        Reorder
+      </button>
+    </ion-item>
+  </ion-card>
 
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="addFavoriteRoute()"><ion-icon name="add"></ion-icon></button>

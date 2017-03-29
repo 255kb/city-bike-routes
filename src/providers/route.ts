@@ -9,7 +9,7 @@ export class RouteProvider {
   private routesStorageKeyName: string = 'routes';
   private routes: Array<IRoute>;
   private timer: Observable<number>;
-  
+
   constructor(private storage: Storage, private bikeProvider: BikeProvider) {
     //set timer to fetch stations infos every 60 seconds
     this.timer = Observable.timer(1000, 60 * 1000);
@@ -68,7 +68,7 @@ export class RouteProvider {
         route.endStation.data = this.setStationColor(endStationData, 'end');
       });
 
-      startSationObserver.concat(endSationObserver).subscribe(() => {}, (error) => {
+      startSationObserver.concat(endSationObserver).subscribe(() => { }, (error) => {
         console.log(error);
       }, () => {
         //set route color
@@ -113,5 +113,30 @@ export class RouteProvider {
     }
 
     return cardColor;
+  }
+
+  public reorder(routeIndex: number, direction: 'up' | 'down') {
+    if (routeIndex > -1 && routeIndex < this.routes.length) {
+      if ((routeIndex === 0 && direction === 'up') || (routeIndex === (this.routes.length - 1) && direction === 'down')) {
+        return;
+      } else {
+        let routeToMove = this.routes[routeIndex];
+
+        if (direction === 'up') {
+          this.routes[routeIndex] = this.routes[routeIndex - 1];
+          //set destination
+          this.routes[routeIndex - 1] = routeToMove;
+        } else if (direction === 'down') {
+          this.routes[routeIndex] = this.routes[routeIndex + 1];
+          //set destination
+          this.routes[routeIndex + 1] = routeToMove;
+        }
+
+        this.storage.set(this.routesStorageKeyName, JSON.stringify(this.routes)).then((routesString: string) => {
+        }).catch((error) => {
+          console.log('error while removing route');
+        });
+      }
+    }
   }
 }
