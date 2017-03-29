@@ -1,25 +1,16 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      City Bike <ion-icon name="star"></ion-icon>
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addFavoriteRoute()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
   <ion-card *ngIf="routes.length === 0">
     <ion-item>
       <h2>You don't have any favorite route</h2>
       <button ion-button color="primary" icon-right clear item-right (click)="addFavoriteRoute()">
-        Add
+        Add one
       </button>
     </ion-item>
   </ion-card>
 
   <user-route *ngFor="let route of routes; let routeIndex = index" [route]="route" [routeIndex]="routeIndex"></user-route>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="addFavoriteRoute()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
