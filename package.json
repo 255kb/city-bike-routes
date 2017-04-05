@@ -1,5 +1,5 @@
 {
-  "name": "city-bike-fav",
+  "name": "city-bike-routes",
   "version": "1.0.0",
   "author": {
     "name": "Guillaume Monnet",
@@ -36,7 +36,7 @@
     "@ionic/app-scripts": "1.1.4",
     "typescript": "2.0.9"
   },
-  "description": "City Bike Fav: Save your favorites routes in many cities' bike sharing services",
+  "description": "City Bike Routes: Save your favorites routes in many cities' bike sharing services",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",

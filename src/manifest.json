@@ -1,6 +1,6 @@
 {
-  "name": "City Bike Fav",
-  "short_name": "City Bike Fav",
+  "name": "City Bike Routes",
+  "short_name": "City Bike Routes",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
