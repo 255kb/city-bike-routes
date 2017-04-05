@@ -8,29 +8,20 @@ export class StationsFormatterProvider {
   constructor(private utils: UtilsProvider) {
   }
 
-
   /**
    * Return stations list
-   *
-   * @private
-   * @returns
-   *
-   * @memberOf StationsFormatterProvider
    */
   private getList() {
     return this.stationList;
   }
 
   /**
-   *  Init stations array formatting
+   * Init stations array formatting
    *
-   * @param {Array<any>} stationList
-   * @param {boolean} formatNames
-   * @param {boolean} sort
-   * @param {boolean} showStationNumber
-   * @returns {Array<any>}
-   *
-   * @memberOf StationsFormatterProvider
+   * @param stationList - list of stations
+   * @param formatNames - do we need name formatting
+   * @param sort - do we need sorting
+   * @param showStationNumber - do we want to display station numbers
    */
   public format(stationList: Array<any>, formatNames: boolean, sort: boolean, showStationNumber: boolean): Array<any> {
     this.stationList = stationList;
@@ -40,11 +31,7 @@ export class StationsFormatterProvider {
   /**
    * Format stations names
    *
-   * @private
-   * @param {boolean} showStationNumber
-   * @returns {this}
-   *
-   * @memberOf StationsFormatterProvider
+   * @param showStationNumber - do we want to display station numbers
    */
   private formatNames(showStationNumber: boolean): this {
     this.stationList = this.stationList.map((station) => {
@@ -64,11 +51,6 @@ export class StationsFormatterProvider {
 
   /**
    * Sort stations by name
-   *
-   * @private
-   * @returns {this}
-   *
-   * @memberOf StationsFormatterProvider
    */
   private sort(): this {
     this.stationList = this.stationList.sort(this.utils.compareDesc);

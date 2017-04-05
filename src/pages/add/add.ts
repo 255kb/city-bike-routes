@@ -22,6 +22,7 @@ export class AddPage {
   public stationsLoaded: boolean = false;
 
   constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider, private utils: UtilsProvider, private stationsFormatterProvider: StationsFormatterProvider) {
+    //fetch contracts when entering component
     bikeProvider.getContracts()
       .subscribe((contracts) => {
         this.contracts = contracts.sort(this.utils.compareDesc);
@@ -34,6 +35,10 @@ export class AddPage {
       });
   }
 
+  /**
+   * Fetch stations data on contract selection
+   * @param newContract - selected contract
+   */
   public onContractChange(newContract: string) {
     this.contractSelected = true;
     this.selectedContract = newContract;
@@ -52,6 +57,9 @@ export class AddPage {
       });
   }
 
+  /**
+   * Add route to favorites
+   */
   public addRoute() {
     if (this.selectedContract !== null && this.selectedStartingStation !== null && this.selectedEndingStation !== null) {
       this.routeProvider.addRoute({

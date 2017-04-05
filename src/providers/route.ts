@@ -13,13 +13,14 @@ export class RouteProvider {
   constructor(private storage: Storage, private bikeProvider: BikeProvider) {
     //set timer to fetch stations infos every 60 seconds
     this.timer = Observable.timer(60 * 1000, 60 * 1000);
-
-    //get stations info
     this.timer.subscribe(() => {
       this.refreshRoutes();
     });
   }
 
+  /**
+   * Get saved routes from storage
+   */
   public getRoutes(): Promise<Array<IRoute>> {
     if (!this.routes) {
       return new Promise((resolve, reject) => {
@@ -39,15 +40,25 @@ export class RouteProvider {
     }
   }
 
+  /**
+   * Add route to saved routes
+   *
+   * @param route - route object to add
+   */
   public addRoute(route: IRoute): void {
     this.routes.unshift(route);
     this.refreshRoutes();
   }
 
-  public removeRoute(routeId: number): void {
+  /**
+   * Remove route from storage
+   *
+   * @param routeIndex - route index to remove
+   */
+  public removeRoute(routeIndex: number): void {
     //remove from routes array
-    if (routeId > -1 && routeId < this.routes.length) {
-      this.routes.splice(routeId, 1);
+    if (routeIndex > -1 && routeIndex < this.routes.length) {
+      this.routes.splice(routeIndex, 1);
 
       this.storage.set(this.routesStorageKeyName, JSON.stringify(this.routes)).then((routesString: string) => {
       }).catch((error) => {
@@ -58,17 +69,20 @@ export class RouteProvider {
     }
   }
 
+  /**
+   * Refresh routes data by calling the provider API
+   */
   public refreshRoutes() {
 
     this.routes.forEach((route, index) => {
-      let startSationObserver = this.bikeProvider.getStations(route.contract, route.startStation.number).do((startStationData) => {
+      let startStationObserver = this.bikeProvider.getStations(route.contract, route.startStation.number).do((startStationData) => {
         route.startStation.data = this.setStationColor(startStationData, 'start');
       });
-      let endSationObserver = this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
+      let endStationObserver = this.bikeProvider.getStations(route.contract, route.endStation.number).do((endStationData) => {
         route.endStation.data = this.setStationColor(endStationData, 'end');
       });
 
-      startSationObserver.concat(endSationObserver).subscribe(() => { }, (error) => {
+      startStationObserver.concat(endStationObserver).subscribe(() => { }, (error) => {
         console.log(error);
       }, () => {
         //set route color
@@ -83,7 +97,13 @@ export class RouteProvider {
     });
   }
 
-  private setStationColor(stationData: any, type: string): any {
+  /**
+   * Set station color from a station's data
+   *
+   * @param stationData - data of a stationData
+   * @param type - type of the station (start | end)
+   */
+  private setStationColor(stationData: any, type: 'start' | 'end'): any {
     let stationProperty = 'available_bikes';
     if (type === 'end') {
       stationProperty = 'available_bike_stands';
@@ -99,6 +119,11 @@ export class RouteProvider {
     return stationData;
   }
 
+  /**
+   * Set card color from route data
+   *
+   * @param routeData - complete data from a route
+   */
   private setCardIndicator(routeData: any) {
     let startColor = routeData.startStation.data.color;
     let endColor = routeData.endStation.data.color;
@@ -115,6 +140,12 @@ export class RouteProvider {
     return cardColor;
   }
 
+  /**
+   * Reorder a route up or down
+   *
+   * @param routeIndex - index from route to move
+   * @param direction - move direction up or down
+   */
   public reorder(routeIndex: number, direction: 'up' | 'down') {
     if (routeIndex > -1 && routeIndex < this.routes.length) {
       if ((routeIndex === 0 && direction === 'up') || (routeIndex === (this.routes.length - 1) && direction === 'down')) {

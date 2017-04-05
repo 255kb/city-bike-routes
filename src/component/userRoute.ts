@@ -24,22 +24,9 @@ export class UserRouteComponent implements DoCheck {
     this.routeDiffer = this.differs.find(this.route).create(null);
   }
 
-  public removeRoute() {
-    if (this.awaitingDeletion) {
-      this.routeProvider.removeRoute(this.routeIndex);
-    } else {
-      this.awaitingDeletion = true;
-      setTimeout(() => {
-        this.awaitingDeletion = false;
-      }, 10000);
-    }
-  }
-
-  public reorder(direction: 'up' | 'down') {
-    this.routeProvider.reorder(this.routeIndex, direction);
-    this.events.publish('reordering:stopped');
-  }
-
+  /**
+   * React to routes color changes
+   */
   ngDoCheck() {
     let routeChanges = this.routeDiffer.diff(this.route);
 
@@ -53,5 +40,29 @@ export class UserRouteComponent implements DoCheck {
       routeChanges.forEachChangedItem(changeCallback);
       routeChanges.forEachAddedItem(changeCallback);
     }
+  }
+
+  /**
+   * Remove a route from the storage
+   */
+  public removeRoute() {
+    if (this.awaitingDeletion) {
+      this.routeProvider.removeRoute(this.routeIndex);
+    } else {
+      this.awaitingDeletion = true;
+      setTimeout(() => {
+        this.awaitingDeletion = false;
+      }, 10000);
+    }
+  }
+
+  /**
+   * Reorder a route in the storage
+   *
+   * @param direction - direction of the reordering (up or down)
+   */
+  public reorder(direction: 'up' | 'down') {
+    this.routeProvider.reorder(this.routeIndex, direction);
+    this.events.publish('reordering:stopped');
   }
 }
