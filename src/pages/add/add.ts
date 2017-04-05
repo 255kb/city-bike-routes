@@ -18,6 +18,7 @@ export class AddPage {
   public selectedStartingStation: number = null;
   public selectedEndingStation: number = null;
   public contractSelected: boolean = false;
+  public routeName: string = '';
   public stationsLoaded: boolean = false;
 
   constructor(public navCtrl: NavController, public toastController: ToastController, private bikeProvider: BikeProvider, private routeProvider: RouteProvider, private utils: UtilsProvider, private stationsFormatterProvider: StationsFormatterProvider) {
@@ -54,6 +55,7 @@ export class AddPage {
   public addRoute() {
     if (this.selectedContract !== null && this.selectedStartingStation !== null && this.selectedEndingStation !== null) {
       this.routeProvider.addRoute({
+        name: this.routeName,
         contract: this.selectedContract,
         color: '',
         startStation: { number: this.selectedStartingStation },

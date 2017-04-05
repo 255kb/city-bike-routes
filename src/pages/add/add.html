@@ -12,19 +12,23 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label>1. City</ion-label>
+      <ion-label>1. Route name</ion-label>
+      <ion-input [(ngModel)]="routeName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>2. City</ion-label>
       <ion-select [ngModel]="selectedContract" (ngModelChange)="onContractChange($event)">
         <ion-option *ngFor="let contract of contracts" value="{{contract.name}}">{{contract.name}} - {{contract.commercial_name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>2. Starting station</ion-label>
+      <ion-label>3. Starting station</ion-label>
       <ion-select [(ngModel)]="selectedStartingStation" disabled="{{!contractSelected && !stationsLoaded}}">
         <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station.name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>3. Ending station</ion-label>
+      <ion-label>4. Ending station</ion-label>
       <ion-select [(ngModel)]="selectedEndingStation" disabled="{{!contractSelected && !stationsLoaded}}">
         <ion-option *ngFor="let station of stations | stationStatus:'OPEN'" value="{{station.number}}">{{station.name}}</ion-option>
       </ion-select>

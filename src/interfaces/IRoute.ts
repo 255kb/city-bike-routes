@@ -1,4 +1,5 @@
 export interface IRoute {
+  name?: string;
   contract: string;
   color: string;
   startStation: {
