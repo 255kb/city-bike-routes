@@ -4,8 +4,8 @@
   <description>Save your favorites routes in many cities' bike sharing services with City Bike Routes</description>
   <author email="hi@255kb.com" href="https://255kb.com/">Guillaume Monnet</author>
   <content src="index.html"/>
-  <access origin="*"/>
   <allow-navigation href="http://ionic.local/*"/>
+  <access origin="*://api.jcdecaux.com/*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
