@@ -12,7 +12,7 @@ export class RouteProvider {
 
   constructor(private storage: Storage, private bikeProvider: BikeProvider) {
     //set timer to fetch stations infos every 60 seconds
-    this.timer = Observable.timer(1000, 60 * 1000);
+    this.timer = Observable.timer(60 * 1000, 60 * 1000);
 
     //get stations info
     this.timer.subscribe(() => {
