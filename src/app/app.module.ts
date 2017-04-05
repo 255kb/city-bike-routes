@@ -29,7 +29,7 @@ import { StationsFormatterProvider } from '../providers/stationsFormatter';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot({ name: '__cbf' })
+    IonicStorageModule.forRoot({ name: '__cbr' })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
