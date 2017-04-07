@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { AddPage } from '../pages/add/add';
 import { HomePage } from '../pages/home/home';
@@ -42,6 +44,8 @@ import { BrowserModule } from '@angular/platform-browser';
     HomePage
   ],
   providers: [
+    StatusBar,
+    SplashScreen,
     BikeProvider,
     RouteProvider,
     UtilsProvider,
