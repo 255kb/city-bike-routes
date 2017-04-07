@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
@@ -12,6 +13,7 @@ import { StationStatus } from '../pipes/stationStatus';
 import { TimeAgo } from '../pipes/timeAgo';
 import { UtilsProvider } from '../providers/utils';
 import { StationsFormatterProvider } from '../providers/stationsFormatter';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { StationsFormatterProvider } from '../providers/stationsFormatter';
     TimeAgo
   ],
   imports: [
+    BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({ name: '__cbr' })
   ],
